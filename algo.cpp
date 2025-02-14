@@ -13,9 +13,9 @@ int battingside_rotation_per_overs;
 int bowlingside_rotation_per_overs;
 
 // functions
-
 void Test()
 {
+    cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
     cout << "batsmen: " << batsmen << endl;
     cout << "bowlers: " << bowlers << endl;
     cout << "overs: " << overs << endl;
@@ -25,7 +25,9 @@ void Test()
     cout << "fielders_from_bowlers_side: " << fielders_from_bowlers_side << endl;
     cout << "battingside_rotation_per_overs: " << battingside_rotation_per_overs << endl;
     cout << "bowlingside_rotation_per_overs: " << bowlingside_rotation_per_overs << endl;
+    cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
 }
+
 void init()
 {
     batsmen = 0;
@@ -179,13 +181,13 @@ void batsmenMatrixFun()
 
     // Total rest instances
     int restInst = restOversForBatsman / battingside_rotation_per_overs;
-
+    
+    // After Batting rest instance
+    int prevInst = restInst - restInst / 2;
+    
     // After Batting rest instance
     int nextInst = restInst / 2;
-
-    // After Bowling rest instance
-    int prevInst = restInst - restInst / 2;
-
+    
     // first row formation
     int cnt = 0;
 
@@ -328,11 +330,6 @@ void bowlersMatrixFun()
         }
         cout << endl;
     }
-    //  bowlers;
-    //  overs;
-    //  overs_per_bowler;
-    //  fielders_from_bowlers_side;
-    //  bowlingside_rotation_per_overs;
 }
 
 int main()
@@ -373,9 +370,13 @@ int main()
         cout << "Invalid Input" << endl;
         return 1;
     }
+    system("clear");
 
-    Test();
+    cout<<"@---> batting/bowling"<<endl;
+    cout<<"&---> Rest"<<endl;
 
     batsmenMatrixFun();
     bowlersMatrixFun();
+
+    Test();
 }
