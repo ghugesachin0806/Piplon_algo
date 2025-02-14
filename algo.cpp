@@ -236,8 +236,17 @@ void batsmenMatrixFun()
     }
 
     // printing of Matrix
+    cout << "overs-> ";
+    for (int i = 0; i < overs; i++)
+    {
+        cout << i%10 << " ";
+    }
+    cout << endl;
+    cout << "-------------------" << endl;
+
     for (int i = 0; i < batsmen; i++)
     {
+        cout << "btt-" << i+1 << "-> ";
         for (int j = 0; j < overs; j++)
             cout << matrix[i][j] << " ";
         cout << endl;
@@ -266,47 +275,57 @@ void bowlersMatrixFun()
 
     // first row
     int currPosition = 0;
-    int nextPosition = overs/(overs_per_bowler/bowlingside_rotation_per_overs);
+    int nextPosition = overs / (overs_per_bowler / bowlingside_rotation_per_overs);
 
-    for(int i=0;i<overs_per_bowler/bowlingside_rotation_per_overs;i++)
+    for (int i = 0; i < overs_per_bowler / bowlingside_rotation_per_overs; i++)
     {
-        int cnt= currPosition;
+        int cnt = currPosition;
 
         // -> bowling during first rotation
-        for(int j=0;j<bowlingside_rotation_per_overs;j++)
+        for (int j = 0; j < bowlingside_rotation_per_overs; j++)
         {
             matrix[0][cnt] = '@';
             cnt++;
         }
 
         // -> fielding during first rotation
-        for(int i = fielders_from_bowlers_side;i>0;--i)
+        for (int i = fielders_from_bowlers_side; i > 0; --i)
         {
-            for(int j=0;j<bowlingside_rotation_per_overs;j++)
+            for (int j = 0; j < bowlingside_rotation_per_overs; j++)
             {
                 matrix[0][cnt] = '0' + i;
                 cnt++;
             }
         }
         // increment slot
-        currPosition +=nextPosition;
+        currPosition += nextPosition;
     }
 
     // Other rows
-    for(int i=1;i<bowlers;i++)
+    for (int i = 1; i < bowlers; i++)
     {
-        for(int j=0;j<overs;j++)
+        for (int j = 0; j < overs; j++)
         {
-            matrix[i][j] = matrix[i-1][(j+(overs-bowlingside_rotation_per_overs)%overs)%overs];
+            matrix[i][j] = matrix[i - 1][(j + (overs - bowlingside_rotation_per_overs) % overs) % overs];
         }
     }
 
-    cout<<"-------------"<<endl;
+    cout<<">>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
     // printing of Matrix
+    cout << "overs-> ";
+    for (int i = 0; i < overs; i++)
+    {
+        cout << i%10 << " ";
+    }
+    cout << endl;
+    cout << "-------------------" << endl;
     for (int i = 0; i < bowlers; i++)
     {
+        cout << "bwl-" << i+1 << "-> ";
         for (int j = 0; j < overs; j++)
+        {
             cout << matrix[i][j] << " ";
+        }
         cout << endl;
     }
     //  bowlers;
